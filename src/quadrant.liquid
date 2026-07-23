@@ -1,0 +1,30 @@
+<!--  view view--quadrant (platform-provided in a Mashup)  -->
+{% if error %}
+  {% render "error_state", error: error %}
+{% else %}
+<div class="layout layout--col layout--center gap--xsmall portrait:gap--small">
+  <div class="grid grid--cols-2 lg:portrait:grid--cols-1 gap--xsmall">
+    <div class="flex flex--col flex--center-x">
+      <span class="label label--xsmall label--error">Critical</span>
+      <span class="value value--small lg:value--xlarge lg:portrait:value--xxlarge value--tnums" data-fit-value="true">{{ severity_counts.critical | default: 0 }}</span>
+    </div>
+    <div class="flex flex--col flex--center-x">
+      <span class="label label--xsmall label--warning">High</span>
+      <span class="value value--small lg:value--xlarge lg:portrait:value--xxlarge value--tnums" data-fit-value="true">{{ severity_counts.high | default: 0 }}</span>
+    </div>
+  </div>
+  <div class="divider"></div>
+  <div class="grid grid--cols-2 gap--xsmall">
+    <div class="flex flex--col flex--center-x">
+      <span class="label label--xsmall">Alerts</span>
+      <span class="value value--small lg:value--xlarge lg:portrait:value--large value--tnums" data-fit-value="true">{{ alert_count }}</span>
+    </div>
+    <div class="flex flex--col flex--center-x">
+      <span class="label label--xsmall">Repos</span>
+      <span class="value value--small lg:value--xlarge lg:portrait:value--large value--tnums" data-fit-value="true">{{ repo_count }}</span>
+    </div>
+  </div>
+</div>
+{% endif %}
+{% render "title_bar", org: org, generated_at: generated_at %}
+<!--  /view  -->

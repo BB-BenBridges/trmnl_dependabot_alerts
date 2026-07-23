@@ -1,0 +1,16 @@
+{% template title_bar %}
+<div class="title_bar">
+  <img class="image" alt="Dependabot" src="https://trmnl.com/images/plugins/github--render.svg">
+  <span class="title">Dependabot Alerts</span>
+  <span class="instance">
+    {{ org }}{% if generated_at %} &middot; {{ generated_at | date: "%b %d, %H:%M" }}{% endif %}
+  </span>
+</div>
+{% endtemplate %}
+
+{% template error_state %}
+<div class="layout layout--col layout--center gap--small">
+  <span class="label label--error label--large">Data Error</span>
+  <span class="description description--small text--center" data-clamp="3">{{ error }}</span>
+</div>
+{% endtemplate %}

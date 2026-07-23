@@ -1,0 +1,38 @@
+<!--  view view--half_vertical (platform-provided in a Mashup)  -->
+{% if error %}
+  {% render "error_state", error: error %}
+{% else %}
+<div class="layout layout--col layout--center gap--large portrait:gap--medium">
+  <div class="grid grid--cols-2 gap--large portrait:gap--medium">
+    <div class="flex flex--col flex--center-x gap--small">
+      <span class="label label--error">Critical</span>
+      <span class="value value--large lg:value--xxlarge lg:portrait:value--xxxlarge value--tnums" data-fit-value="true">{{ severity_counts.critical | default: 0 }}</span>
+    </div>
+    <div class="flex flex--col flex--center-x gap--small">
+      <span class="label label--warning">High</span>
+      <span class="value value--large lg:value--xxlarge lg:portrait:value--xxxlarge value--tnums" data-fit-value="true">{{ severity_counts.high | default: 0 }}</span>
+    </div>
+    <div class="flex flex--col flex--center-x gap--small">
+      <span class="label">Medium</span>
+      <span class="value value--large lg:value--xxlarge lg:portrait:value--xxxlarge value--tnums" data-fit-value="true">{{ severity_counts.medium | default: 0 }}</span>
+    </div>
+    <div class="flex flex--col flex--center-x gap--small">
+      <span class="label label--gray">Low</span>
+      <span class="value value--large lg:value--xxlarge lg:portrait:value--xxxlarge value--tnums" data-fit-value="true">{{ severity_counts.low | default: 0 }}</span>
+    </div>
+  </div>
+  <div class="divider"></div>
+  <div class="flex flex--row lg:portrait:flex--col flex--center gap--xlarge">
+    <div class="flex flex--col flex--center-x gap--small">
+      <span class="label">Alerts</span>
+      <span class="value value--large lg:value--xxlarge lg:portrait:value--xxxlarge value--tnums" data-fit-value="true">{{ alert_count }}</span>
+    </div>
+    <div class="flex flex--col flex--center-x gap--small">
+      <span class="label">Repos</span>
+      <span class="value value--large lg:value--xxlarge lg:portrait:value--xxxlarge value--tnums" data-fit-value="true">{{ repo_count }}</span>
+    </div>
+  </div>
+</div>
+{% endif %}
+{% render "title_bar", org: org, generated_at: generated_at %}
+<!--  /view  -->

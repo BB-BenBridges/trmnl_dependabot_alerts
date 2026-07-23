@@ -1,0 +1,54 @@
+{% if error %}
+  {% render "error_state", error: error %}
+{% else %}
+  <div class="layout layout--col gap--small">
+    <div class="grid grid--cols-4 portrait:grid--cols-2">
+      <div class="item">
+        <div class="meta"></div>
+        <div class="content flex flex--col flex--center-y">
+          <span class="value value--xlarge lg:value--xxlarge value--tnums" data-fit-value="true">{{ severity_counts.critical | default: 0 }}</span>
+          <span class="label label--error">Critical</span>
+        </div>
+      </div>
+      <div class="item">
+        <div class="meta"></div>
+        <div class="content flex flex--col flex--center-y">
+          <span class="value value--xlarge lg:value--xxlarge value--tnums" data-fit-value="true">{{ severity_counts.high | default: 0 }}</span>
+          <span class="label label--warning">High</span>
+        </div>
+      </div>
+      <div class="item">
+        <div class="meta"></div>
+        <div class="content flex flex--col flex--center-y">
+          <span class="value value--xlarge lg:value--xxlarge value--tnums" data-fit-value="true">{{ severity_counts.medium | default: 0 }}</span>
+          <span class="label">Medium</span>
+        </div>
+      </div>
+      <div class="item">
+        <div class="meta"></div>
+        <div class="content flex flex--col flex--center-y">
+          <span class="value value--xlarge lg:value--xxlarge value--tnums" data-fit-value="true">{{ severity_counts.low | default: 0 }}</span>
+          <span class="label label--gray">Low</span>
+        </div>
+      </div>
+    </div>
+    <div class="divider"></div>
+    <div class="grid grid--cols-2 portrait:grid--cols-1">
+      <div class="item">
+        <div class="meta"></div>
+        <div class="content flex flex--col flex--center-y">
+          <span class="value value--xxlarge lg:value--xxxlarge value--tnums" data-fit-value="true">{{ alert_count }}</span>
+          <span class="label">Total Alerts</span>
+        </div>
+      </div>
+      <div class="item">
+        <div class="meta"></div>
+        <div class="content flex flex--col flex--center-y">
+          <span class="value value--xxlarge lg:value--xxxlarge value--tnums" data-fit-value="true">{{ repo_count }}</span>
+          <span class="label">Affected Repos</span>
+        </div>
+      </div>
+    </div>
+  </div>
+{% endif %}
+{% render "title_bar", org: org, generated_at: generated_at %}

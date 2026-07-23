@@ -1,0 +1,39 @@
+<!-- view view--half_horizontal (platform-provided in a Mashup) -->
+{% if error %}
+  {% render "error_state", error: error %}
+{% else %}
+<div class="layout layout--row layout--center gap--xlarge portrait:layout--col portrait:gap--large">
+  <div class="flex flex--row flex--center gap--large portrait:flex--wrap">
+    <div class="flex flex--col flex--center-x gap--small">
+      <span class="label label--error">Critical</span>
+      <span class="value value--xlarge lg:value--xxxlarge value--tnums" data-fit-value="true">{{ severity_counts.critical | default: 0 }}</span>
+    </div>
+    <div class="flex flex--col flex--center-x gap--small">
+      <span class="label label--warning">High</span>
+      <span class="value value--xlarge lg:value--xxxlarge value--tnums" data-fit-value="true">{{ severity_counts.high | default: 0 }}</span>
+    </div>
+    <div class="flex flex--col flex--center-x gap--small">
+      <span class="label">Medium</span>
+      <span class="value value--xlarge lg:value--xxxlarge value--tnums" data-fit-value="true">{{ severity_counts.medium | default: 0 }}</span>
+    </div>
+    <div class="flex flex--col flex--center-x gap--small">
+      <span class="label label--gray">Low</span>
+      <span class="value value--xlarge lg:value--xxxlarge value--tnums" data-fit-value="true">{{ severity_counts.low | default: 0 }}</span>
+    </div>
+  </div>
+  <div class="divider--v portrait:hidden"></div>
+  <div class="divider hidden portrait:block"></div>
+  <div class="flex flex--row flex--center gap--large">
+    <div class="flex flex--col flex--center-x gap--small">
+      <span class="label">Total Alerts</span>
+      <span class="value value--xlarge lg:value--xxxlarge value--tnums" data-fit-value="true">{{ alert_count }}</span>
+    </div>
+    <div class="flex flex--col flex--center-x gap--small">
+      <span class="label">Repos</span>
+      <span class="value value--xlarge lg:value--xxxlarge value--tnums" data-fit-value="true">{{ repo_count }}</span>
+    </div>
+  </div>
+</div>
+{% endif %}
+{% render "title_bar", org: org, generated_at: generated_at %}
+<!-- /view -->
